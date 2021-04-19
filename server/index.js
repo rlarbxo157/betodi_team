@@ -6,6 +6,9 @@ const PORT =process.env.PORT || 8000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());  //
 
+
+app.use('/api/users',require('./routes/users'));
+
 app.get('/',(req,res)=> {  //localhost:8000 접속시
     res.send('hihi')
   })

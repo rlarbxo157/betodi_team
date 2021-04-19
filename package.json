@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rlarbxo157/betodi_team/issues"
   },
-  "homepage": "https://github.com/rlarbxo157/betodi_team#readme"
+  "homepage": "https://github.com/rlarbxo157/betodi_team#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
