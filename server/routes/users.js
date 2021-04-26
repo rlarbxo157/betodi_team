@@ -1,6 +1,6 @@
-const express= require('express');
+const express = require('express');
 const router = express.Router();
-const {User} = require("../Model/User")
+const { User } = require("../Model/User");
 const { auth } = require("../middleware/auth");
 
 router.get("/auth", auth, (req, res) => {
@@ -15,7 +15,6 @@ router.get("/auth", auth, (req, res) => {
         image: req.user.image,
     });
 });
-
 
 router.post("/register", (req, res) => {
 

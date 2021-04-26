@@ -46,7 +46,9 @@ const userSchema = mongoose.Schema({
 })
 
 userSchema.pre('save',function(next){
+
     let user = this;   //schema 안에 정보를 가르킴
+
     if(user.isModified('password')){   //field 중에 password가 바뀔때만 
         bcrypt.genSalt(saltRounds,function(err,salt){
             if(err) return next(err);
@@ -62,8 +64,10 @@ userSchema.pre('save',function(next){
         next()
     }
 })
+
 userSchema.methods.comparePassword = function(plainPassword,callback){
 
+    
     //plainPasswod 1234567   db에 존재하는 암호화된 비밀번호
     //plainPassword 를 암호화해서 db에있는 암호화된 비밀번호랑 매칭시키면됨.
     bcrypt.compare(plainPassword,this.password,function(err,isMatch){
@@ -73,6 +77,7 @@ userSchema.methods.comparePassword = function(plainPassword,callback){
     })
     
 }
+
 userSchema.methods.generateToken = function(callback) {
     let user =this;
     //jsonwebtoken을 이용해서 token 생성하기
@@ -86,6 +91,7 @@ userSchema.methods.generateToken = function(callback) {
     })
 
 }
+
 userSchema.statics.findByToken = function(token,callback){
     let user = this;
 
@@ -100,6 +106,8 @@ userSchema.statics.findByToken = function(token,callback){
 
     })
 }
+
 const User = mongoose.model('User', userSchema)
+
 module.exports  ={User}
 
