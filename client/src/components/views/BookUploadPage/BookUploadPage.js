@@ -5,6 +5,7 @@ import { bookSearch } from '../../utils/KakaoApi';
 import Axios from 'axios';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Item from './Item';
+import Scanner from '../Barcode/Scanner';
 const { TextArea } = Input;
 
 
@@ -26,6 +27,13 @@ function BookUploadPage(props) {
     const [Price, setPrice] = useState(0)
     const [Continent, setContinent] = useState(1)
     const [Images, setImages] = useState([])
+
+    const [camera, setCamera] = useState(false);
+    const [result, setResult] = useState(null);
+
+    const onDetected = result => {
+        setResult(result);
+    };
 
     useEffect(() => {
         setBooks([]);
@@ -116,6 +124,12 @@ function BookUploadPage(props) {
                 <button type="submit" onClick={bookSearchHandler}>
                     책검색
                 </button>
+                <div>
+                    <button onClick={() => setCamera(!camera)}>
+                        {camera ? "Stop" : "Start"}
+                    </button>
+                    {camera && <Scanner onDetected={onDetected} />}
+                </div>
                 <div>
                     {books.map((book, index) => (
                         <CardActionArea
