@@ -39,6 +39,10 @@ function BookUploadPage(props) {
         setBooks([]);
     }, [searchData]);
 
+    useEffect(() => {
+        setSearchData(result);
+    }, [result]);
+
     const onTextUpdate = e => {
         setSearchData(e.target.value);
     };
@@ -125,10 +129,7 @@ function BookUploadPage(props) {
                     책검색
                 </button>
                 <div>
-                    <button onClick={() => setCamera(!camera)}>
-                        {camera ? "Stop" : "Start"}
-                    </button>
-                    {camera && <Scanner onDetected={onDetected} />}
+                    <Scanner onDetected={onDetected} />
                 </div>
                 <div>
                     {books.map((book, index) => (
