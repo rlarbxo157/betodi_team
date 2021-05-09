@@ -1,7 +1,7 @@
 import Quagga from "quagga";
 import React, { useState, useEffect } from "react";
-import { IconButton } from '@material-ui/core';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// import { IconButton } from '@material-ui/core';
+
 
 const Scanner = props => {
     const { onDetected } = props;
@@ -53,7 +53,7 @@ const Scanner = props => {
     return (
         <div>
             <input id="inputId" type="file" capture="camera" accept="image/*" onChange={(e) => handleCapture(e.target)} />
-            <label htmlFor="icon-button-file">
+            {/* <label htmlFor="icon-button-file">
                 <IconButton
                     color="primary"
                     aria-label="upload picture"
@@ -61,7 +61,7 @@ const Scanner = props => {
                 >
                     <i class="fas fa-barcode" fontSize="large" color="primary" />
                 </IconButton>
-            </label>
+            </label> */}
         </div>
     );
 };
