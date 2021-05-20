@@ -82,6 +82,10 @@ const productSchema = mongoose.Schema({
     views: {
         type: Number,
         default: 0
+    },
+    enddate: {
+        type: Date,
+        default: '01/01/2099'
     }
 }, { timestamp: true })
 

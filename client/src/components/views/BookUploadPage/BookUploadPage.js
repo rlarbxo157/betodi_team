@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Typography, Button, Form, Input } from 'antd';
+import { Typography, Button, Form, Input, DatePicker, message } from 'antd';
 import FileUpload from '../../utils/FileUpload';
 import { bookSearch } from '../../utils/KakaoApi';
 import Axios from 'axios';
@@ -27,6 +27,7 @@ function BookUploadPage(props) {
     const [Price, setPrice] = useState(0)
     const [Continent, setContinent] = useState(1)
     const [Images, setImages] = useState([])
+    const [endDate, setEndDate] = useState(null)
 
     const [camera, setCamera] = useState(false);
     const [result, setResult] = useState(null);
@@ -56,6 +57,10 @@ function BookUploadPage(props) {
         };
         const { data } = await bookSearch(params);
         setBooks(books.concat(data.documents));
+    };
+    const dateHandler = value => {
+        message.info(`Selected Date: ${value ? value.format('YYYY-MM-DD') : 'None'}`);
+        setEndDate(value);
     };
 
     const bookSelectHandler = index => {
@@ -99,7 +104,8 @@ function BookUploadPage(props) {
             price: Price,
             images: Images,
             continents: Continent,
-            selectedbooks: selectedBooks
+            selectedbooks: selectedBooks,
+            enddate: endDate
         }
 
         Axios.post('/api/product', body)
@@ -187,6 +193,11 @@ function BookUploadPage(props) {
                         <option key={item.key} value={item.key}> {item.value}</option>
                     ))}
                 </select>
+                <br />
+                <br />
+                <label>판매 유효 기간</label>
+                <br />
+                <DatePicker onChange={dateHandler} />
                 <br />
                 <br />
                 <button type="submit" onClick={submitHandler}>
