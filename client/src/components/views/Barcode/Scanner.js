@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import {
     BarcodeOutlined,
 } from '@ant-design/icons';
-// import { IconButton } from '@material-ui/core';
-import "./scanner.css";
 
 const Scanner = props => {
     const { onDetected } = props;

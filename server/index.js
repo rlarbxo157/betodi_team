@@ -26,11 +26,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors())
 
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 // app.get('/',(req,res)=> res.send('접속됨'))
 
 app.use('/api/users', require('./routes/users'));
 app.use('/api/product', require('./routes/product'));
 
+app.use('/api/conversations', require('./routes/conversations'));
+app.use('/api/messages', require('./routes/messages'));
 app.use('/uploads', express.static('uploads'));
 
 // Serve static assets if in production
