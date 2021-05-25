@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Typography, Button, Form, Input, DatePicker, message } from 'antd';
+import { Row, Col, Divider, Typography, Button, Form, Input, DatePicker, message } from 'antd';
 import FileUpload from '../../utils/FileUpload';
 import { bookSearch } from '../../utils/KakaoApi';
 import Axios from 'axios';
@@ -16,6 +16,7 @@ const Continents = [
 
 ]
 
+const { Search } = Input;
 function BookUploadPage(props) {
     console.log(props);
     const [books, setBooks] = useState([]);
@@ -29,7 +30,6 @@ function BookUploadPage(props) {
     const [Images, setImages] = useState([])
     const [endDate, setEndDate] = useState(null)
 
-    const [camera, setCamera] = useState(false);
     const [result, setResult] = useState(null);
 
     const onDetected = result => {
@@ -125,18 +125,26 @@ function BookUploadPage(props) {
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                 <h1>도서 정보입력</h1>
             </div>
-            <Form >
-                <Input
-                    placeholder="검색어를 입력 하세요..."
-                    onChange={onTextUpdate} // change
-                    value={searchData} // view
-                />
-                <button type="submit" onClick={bookSearchHandler}>
-                    책검색
-                </button>
-                <div>
-                    <Scanner onDetected={onDetected} />
-                </div>
+            <Form  >
+                <Form.Item
+                    label="책정보 검색"
+                    name="책정보 검색"
+                    layout="inline"
+                >
+                    <Row>
+                        <Col span={18}>
+                            <Search
+                                placeholder="검색어를 입력 하세요..."
+                                onChange={onTextUpdate} // change
+                                value={searchData} // view
+                                enterButton="검색" size="large" onSearch={bookSearchHandler}
+                            />
+                        </Col>
+                        <div>
+                            <Scanner onDetected={onDetected} />
+                        </div>
+                    </Row>
+                </Form.Item>
                 <div>
                     {books.map((book, index) => (
                         <CardActionArea
@@ -158,6 +166,8 @@ function BookUploadPage(props) {
                         // 
                     ))}
                 </div>
+            </Form>
+            <Form>
                 <br />
                 <FileUpload refreshFunction={updateImages} />
                 <br />
