@@ -1,10 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Menu } from 'antd';
+import { Menu, Avatar } from 'antd';
 import axios from 'axios';
 // import { USER_SERVER } from '../../../Config';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import {
+  HomeOutlined,
+  WechatOutlined,
+  FormOutlined,
+  UserOutlined,
+  LogoutOutlined
+} from '@ant-design/icons';
+
 
 function RightMenu(props) {
   const user = useSelector(state => state.user)
@@ -33,12 +41,19 @@ function RightMenu(props) {
   } else {
     return (
       <Menu mode={props.mode}>
-        <Menu.Item key="upload">
+        <Menu.Item key="chat" href="/messenger" icon={<WechatOutlined style={{ fontSize: '30px' }} />}>
+          <a href="/messenger">채팅</a>
+        </Menu.Item>
+        <Menu.Item key="upload" icon={<FormOutlined style={{ fontSize: '20px' }} />}>
           <a href="/product/upload">게시물 작성</a>
         </Menu.Item>
-        <Menu.Item key="logout">
-          <a onClick={logoutHandler}>로그아웃</a>
-        </Menu.Item>
+        <Menu.SubMenu title={<Avatar size="large" icon={<UserOutlined style={{ fontSize: '20px' }} />} />}>
+          <Menu.Item key="mypage" icon={<UserOutlined />}>
+            마이페이지
+            <Link to="/mypage"></Link>
+          </Menu.Item>
+          <Menu.Item key="logout" icon={<LogoutOutlined />} onClick={logoutHandler}>로그아웃</Menu.Item>
+        </Menu.SubMenu>
       </Menu>
     )
   }
