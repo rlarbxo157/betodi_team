@@ -3,6 +3,20 @@ const router = express.Router();
 const { User } = require("../Model/User");
 const { auth } = require("../middleware/auth");
 
+router.get("/", async (req, res) => {
+    const userId = req.query._id;
+    const name = req.query.name;
+    try {
+        const user = userId
+            ? await User.findById(userId)
+            : await User.findOne({ name: name });
+        const { password, updatedAt, ...other } = user._doc;
+        res.status(200).json(other);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get("/auth", auth, (req, res) => {
     res.status(200).json({
         _id: req.user._id,
