@@ -1,7 +1,10 @@
 import Quagga from "quagga";
 import React, { useState, useEffect } from "react";
+import {
+    BarcodeOutlined,
+} from '@ant-design/icons';
 // import { IconButton } from '@material-ui/core';
-
+import "./scanner.css";
 
 const Scanner = props => {
     const { onDetected } = props;
@@ -52,16 +55,11 @@ const Scanner = props => {
 
     return (
         <div>
-            <input id="inputId" type="file" capture="camera" accept="image/*" onChange={(e) => handleCapture(e.target)} />
-            {/* <label htmlFor="icon-button-file">
-                <IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="span"
-                >
-                    <i class="fas fa-barcode" fontSize="large" color="primary" />
-                </IconButton>
-            </label> */}
+            <label>
+                <BarcodeOutlined className="camera" theme="outlined" style={{ margin: '8px', fontSize: '35px' }} />
+                <input id="inputId" style={{ display: 'none' }} type="file" capture="camera" accept="image/*" onChange={(e) => handleCapture(e.target)}>
+                </input>
+            </label>
         </div>
     );
 };
