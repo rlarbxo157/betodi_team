@@ -1,0 +1,9 @@
+.thumbnail {
+    width: 80%;
+    height: 220px;
+    display: block;
+    margin-left: auto;
+    margin-top: 10px;
+    margin-bottom: auto;
+    margin-right: auto;
+  }

@@ -1,0 +1,16 @@
+.crawling-table {
+  display: block;
+  text-align: center;
+  align-items: center;
+}
+
+/* #lastName {
+  background-color: red;
+} */
+
+.rt-td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}

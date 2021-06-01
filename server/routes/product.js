@@ -90,13 +90,23 @@ router.post('/products',(req,res)=> {
   
 router.get('/product_by_id',(req,res)=> {
     let type=req.query.type
-    let productId = req.query.id
+    let productIds = req.query.id
+
+
+    if(type==="array"){
+      //id =12,23,43 이거를
+      // productIds = ['12','23','43'] 이렇게 바꿔야함. 상품아이디는 여러개니까
+      let ids = req.query.id.split(',')
+      productIds=ids.map(item=>{
+        return item
+      })
+    }
  
-    Product.find({_id:productId})
+    Product.find({_id:{$in: productIds}})
       .populate('writer')
       .exec((err,product)=> {
         if(err) return res.status(400).send(err)
-        return res.status(200).send({success:true,product})
+        return res.status(200).json({success:true,product})
       })
 
 

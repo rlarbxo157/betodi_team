@@ -2,13 +2,11 @@ import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import ProductImage from './Sections/ProductImage';
 import ProductInfo from './Sections/ProductInfo';
-import { Col,Card,Row,Carousel, Result} from 'antd';
+import { Col,Row} from 'antd';
 
 function DetailProductPage(props){
 
-
     const productId = props.match.params.productId
-
     const [Product,setProduct] = useState({})
 
     useEffect(() => {
