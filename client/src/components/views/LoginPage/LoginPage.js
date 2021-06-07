@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
 import { withRouter } from 'react-router-dom';
-import { Button } from 'antd';
+import { Form, Button, Input } from 'antd';
 function LoginPage(props) {
 
     const dispatch = useDispatch();
@@ -43,17 +43,17 @@ function LoginPage(props) {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100vh' }}>
-            <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={onSubmitHandler}>
+            <Form style={{ display: 'flex', flexDirection: 'column' }}>
                 <label>Email</label>
-                <input type="email" name="Email" value={Email} onChange={onDataHandleChange} />
+                <Input type="email" name="Email" value={Email} onChange={onDataHandleChange} />
                 <label>Password</label>
-                <input type="password" name="Password" value={Password} onChange={onDataHandleChange} />
+                <Input type="password" name="Password" value={Password} onChange={onDataHandleChange} />
 
                 <br />
-                <Button type="primary">
+                <Button htmlType="submit" type="primary" onClick={onSubmitHandler}>
                     Login
                 </Button>
-            </form>
+            </Form>
         </div>
     )
 }
