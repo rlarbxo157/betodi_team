@@ -87,14 +87,18 @@ function ProductInfo(props) {
 
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Link to='/messenger'>
-                    <Button size="large" shape="round" type="danger" onClick={newchatroomHandler}>
-                        구매 문의하기
+                {props.detail.isSold ? <Button size="large" shape="round" danger disabled>판매 완료</Button> :
+                    <Link to='/messenger'>
+                        <Button size="large" shape="round" type="danger" onClick={newchatroomHandler}>
+                            구매 문의하기
                     </Button>
-                </Link>
-                <Button size="large" shape="round" type="danger" style={{ marginLeft: '30px' }} onClick={clickHandler}>
-                    장바구니 담기
+                    </Link>
+                }
+                {props.detail.isSold ? '' :
+                    <Button size="large" shape="round" type="danger" style={{ marginLeft: '30px' }} onClick={clickHandler}>
+                        장바구니 담기
                 </Button>
+                }
             </div>
             <br /><br />
 
