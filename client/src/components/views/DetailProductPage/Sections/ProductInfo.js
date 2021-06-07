@@ -1,4 +1,4 @@
-import { Descriptions, Button, Empty } from 'antd'
+import { Descriptions, Button, Empty, message } from 'antd'
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import Item from '../../BookUploadPage/Item';
@@ -12,7 +12,7 @@ function ProductInfo(props) {
     const clickHandler = () => {
         //필요한 정보를 카트필드에 넣어준다.
         dispatch(addToCart(props.detail._id));
-        alert('등록되었습니다.');
+        message.success('장바구니에 등록되었습니다.');
     }
 
 
