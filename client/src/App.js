@@ -1,4 +1,4 @@
-import React,{ Suspense } from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import {
   Switch,
@@ -8,10 +8,12 @@ import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import Auth from './hoc/auth';
+import Messenger from './components/views/Messenger/Messenger';
 import Navbar from './components/views/Navbar/Navbar';
 import Footer from './components/views/Footer/Footer';
 import BookUploadPage from './components/views/BookUploadPage/BookUploadPage';
 import DetailProductPage from './components/views/DetailProductPage/DetailProductPage'
+import CartPage from './components/views/CartPage/CartPage';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/product/upload" component={Auth(BookUploadPage, true)} />
           <Route exact path="/product/:productId" component={Auth(DetailProductPage, null)} />
+          <Route exact path="/messenger" component={Auth(Messenger, true)} />
+          <Route exact path="/user/cart" component={Auth(CartPage, true)} />
 
         </Switch>
       </div>
