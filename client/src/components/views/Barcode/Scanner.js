@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import {
     BarcodeOutlined,
 } from '@ant-design/icons';
+import { Tooltip } from 'antd';
 
 const Scanner = props => {
     const { onDetected } = props;
@@ -53,11 +54,13 @@ const Scanner = props => {
 
     return (
         <div>
-            <label>
-                <BarcodeOutlined className="camera" theme="outlined" style={{ margin: '8px', fontSize: '35px' }} />
-                <input id="inputId" style={{ display: 'none' }} type="file" capture="camera" accept="image/*" onChange={(e) => handleCapture(e.target)}>
-                </input>
-            </label>
+            <Tooltip title="바코드 검색" color='cyan'>
+                <label>
+                    <BarcodeOutlined className="camera" theme="outlined" style={{ margin: '8px', fontSize: '35px' }} />
+                    <input id="inputId" style={{ display: 'none' }} type="file" capture="camera" accept="image/*" onChange={(e) => handleCapture(e.target)}>
+                    </input>
+                </label>
+            </Tooltip>
         </div>
     );
 };

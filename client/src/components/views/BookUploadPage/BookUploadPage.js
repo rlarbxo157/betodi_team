@@ -211,9 +211,9 @@ function BookUploadPage(props) {
                 <DatePicker onChange={dateHandler} />
                 <br />
                 <br />
-                <button type="submit" onClick={submitHandler}>
+                <Button type="primary" onClick={submitHandler}>
                     확인
-                </button>
+                </Button>
             </Form>
         </div>
     )

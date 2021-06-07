@@ -1,4 +1,4 @@
-import { Card, Layout, Statistic, Skeleton, PageHeader, Tag, message, Button, Row, Descriptions, Menu, Breadcrumb, Space, Divider } from 'antd';
+import { Card, Layout, Empty, Skeleton, PageHeader, Tag, message, Button, Row, Descriptions, Menu, Breadcrumb, Space, Divider } from 'antd';
 import {
     DesktopOutlined,
     PieChartOutlined,
@@ -84,7 +84,7 @@ export default function MyPage() {
                                         <Descriptions.Item label="Creation Time">{product.createdAt}</Descriptions.Item>
                                     </Descriptions>
                                 </PageHeader>
-                            )) : '...'}
+                            )) : <Empty description={'등록된 게시글이 없습니다'} />}
                         </div>
                     </Content>
                 </Layout>
