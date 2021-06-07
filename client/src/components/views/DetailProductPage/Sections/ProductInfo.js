@@ -1,12 +1,20 @@
 import { Descriptions, Button, Empty } from 'antd'
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Item from '../../BookUploadPage/Item';
 import { Link } from "react-router-dom";
+import { addToCart } from '../../../../_actions/user_action';
 import Axios from "axios";
 import axios from "axios";
 
 function ProductInfo(props) {
+    const dispatch = useDispatch();
+    const clickHandler = () => {
+        //필요한 정보를 카트필드에 넣어준다.
+        dispatch(addToCart(props.detail._id));
+        alert('등록되었습니다.');
+    }
+
 
     const [items, setItems] = useState([]);
     let user = useSelector(state => state.user);
@@ -84,6 +92,9 @@ function ProductInfo(props) {
                         구매 문의하기
                     </Button>
                 </Link>
+                <Button size="large" shape="round" type="danger" style={{ marginLeft: '30px' }} onClick={clickHandler}>
+                    장바구니 담기
+                </Button>
             </div>
             <br /><br />
 
