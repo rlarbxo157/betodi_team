@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Divider, Typography, Button, Form, Input, DatePicker, message } from 'antd';
+import { Row, Col, Divider, Button, Form, Input, DatePicker, message } from 'antd';
 import FileUpload from '../../utils/FileUpload';
 import { bookSearch } from '../../utils/KakaoApi';
 import Axios from 'axios';
@@ -92,7 +92,7 @@ function BookUploadPage(props) {
         event.preventDefault();
 
         if (!Title || !Description || !Price || !Continent || Images.length === 0) {
-            return alert(" 모든 값을 넣어주셔야 합니다.")
+            return message.error('모든값을 넣어주셔야 합니다.');
         }
 
 
@@ -112,10 +112,10 @@ function BookUploadPage(props) {
         Axios.post('/api/product', body)
             .then(response => {
                 if (response.data.success) {
-                    alert('상품 업로드에 성공 했습니다.')
+                    message.success('상품 업로드에 성공했습니다.');
                     props.history.push('/')
                 } else {
-                    alert('상품 업로드에 실패 했습니다.')
+                    message.error('상품 업로드에 실패 했습니다.');
                 }
             })
     }

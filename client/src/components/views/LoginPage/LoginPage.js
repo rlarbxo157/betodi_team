@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
 import { withRouter } from 'react-router-dom';
-import { Form, Button, Input } from 'antd';
+import { Form, Button, Input, message } from 'antd';
 function LoginPage(props) {
 
     const dispatch = useDispatch();
@@ -35,7 +35,7 @@ function LoginPage(props) {
                 if (response.payload.loginSuccess) {
                     props.history.push('/')  //react 에서 페이지 이동시킬떄 props.history
                 } else {
-                    alert('Error')
+                    message.error('아이디나 비밀번호가 다릅니다')
                 }
             })
     }

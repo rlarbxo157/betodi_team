@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
 import { registerUser } from '../../../_actions/user_action';
 import { withRouter } from 'react-router-dom';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 function RegisterPage(props) {
 
     const dispatch = useDispatch();
@@ -29,7 +29,7 @@ function RegisterPage(props) {
         e.preventDefault();
 
         if (Password !== ConfirmPassword) {
-            return alert('비밀번호가 다릅니다.')
+            return message.error('비밀번호가 다릅니다.')
         }
 
         let body = {
@@ -42,8 +42,9 @@ function RegisterPage(props) {
             .then(response => {
                 if (response.payload.success) {
                     props.history.push('/login')
+                    message.success('회원가입에 성공했습니다.')
                 } else {
-                    alert('error')
+                    message.error('error')
                 }
             })
     }
