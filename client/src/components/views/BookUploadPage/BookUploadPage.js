@@ -105,7 +105,8 @@ function BookUploadPage(props) {
             images: Images,
             continents: Continent,
             selectedbooks: selectedBooks,
-            enddate: endDate
+            enddate: endDate,
+            createdAt: Date.now()
         }
 
         Axios.post('/api/product', body)

@@ -13,6 +13,7 @@ import Navbar from './components/views/Navbar/Navbar';
 import Footer from './components/views/Footer/Footer';
 import BookUploadPage from './components/views/BookUploadPage/BookUploadPage';
 import DetailProductPage from './components/views/DetailProductPage/DetailProductPage'
+import MyPage from './components/views/MyPage/MyPage';
 import CartPage from './components/views/CartPage/CartPage';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/mypage" component={Auth(MyPage, true)} />
           <Route exact path="/product/upload" component={Auth(BookUploadPage, true)} />
           <Route exact path="/product/:productId" component={Auth(DetailProductPage, null)} />
           <Route exact path="/messenger" component={Auth(Messenger, true)} />

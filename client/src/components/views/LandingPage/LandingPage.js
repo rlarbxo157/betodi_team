@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import BookCrawling from '../BookCrawling/BookCrawling';
-import { Col, Card, Row } from 'antd';
+import { Col, Card, Row, Tag, Result } from 'antd';
 import Icon from '@ant-design/icons';
 import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
@@ -92,10 +92,17 @@ function LandingPage(props) {
     const renderCards = productData.map((data, index) => {
         return <Col lg={6} md={8} xs={24} key={index}>
             <Card hoverable cover={<a href={`/product/${data._id}`}><ImageSlider images={data.images} /></a>}>
-                <Meta
-                    title={data.title}
-                    description={data.price}
-                />
+                <Row>
+                    <Col flex={4}>
+                        <Meta
+                            title={data.title}
+                            description={data.price}
+                        />
+                    </Col>
+                    <Col flex={1} >
+                        {!data.isSold ? <Tag style={{ float: 'right' }} color="blue">판매중</Tag> : <Tag style={{ float: 'right' }} color="red">판매완료</Tag>}
+                    </Col>
+                </Row>
             </Card>
         </Col>
     })
@@ -121,7 +128,7 @@ function LandingPage(props) {
         <>
             <div style={{ width: '75%', margin: '3rem auto' }}>
                 <div style={{ textAlign: 'center' }}>
-                    <h1>Book data<Icon type="rocket" /></h1>
+                    <h1>판매중인 서적<Icon type="rocket" /></h1>
                 </div>
 
                 <Row gutter={[16, 16]}>
