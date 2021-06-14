@@ -4,7 +4,7 @@
 1. Node.js 설치 / https://nodejs.org/en/
 2. MongoDB 설치 / https://www.mongodb.com/try/download/community
 
-## 실행 방법
+## #실행 방법
 > npm install -g yarn
 
 ## 1. 서버 실행
