@@ -14,7 +14,7 @@ const cheerio = require('cheerio');
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
 // mongodb+srv://ksh5681:ksh5681@cluster0.a8wub.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
-mongoose.connect('mongodb+srv://rlarbxo157:sjaks7788@cluster0.7xilp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect('mongodb://localhost/bookmarket', {
   useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('몽고디비 연결')).catch((err) => console.log(err));
 //mongodb+srv://rlarbxo157:sjaks7788@cluster0.7xilp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
@@ -92,18 +92,18 @@ app.post("/craw", (req, res) => {
 const yesHtml = async (word) => {
 
   let wordUrl = word;
-  try{
+  try {
     return await axios.post(`https://search.kyobobook.co.kr/web/search?vPstrKeyWord=${wordUrl}&orderClick=LAG`);
-  } catch(error){
-      // console.log(error);
+  } catch (error) {
+    // console.log(error);
   }
 }
 
 app.post("/kraw", (req, res) => {
-  
+
   let newWord = req.body.searchData;
   let a = encodeURI(newWord)
-  let b = a.replace(/%/gi,"%25")
+  let b = a.replace(/%/gi, "%25")
 
   yesHtml(b)
     .then((html) => {
@@ -112,22 +112,22 @@ app.post("/kraw", (req, res) => {
       const parentTag = $("tbody").children('tr')
       // console.log(parentTag);
       let resultArr = [];
-      parentTag.each(function (i, elem) {   
+      parentTag.each(function (i, elem) {
         let itemObj = {
-          platform:'교보문고',
-          title:$(this).find('td.detail div.title strong').text(),
-          price:$(this).find('div.sell_price strong').text(),
-          imgEl : $(this).find("td.image img").attr('src'),
-          link :$(this).find('td.image a').attr('href'),
-          author:$(this).find('div.author a').text(),
+          platform: '교보문고',
+          title: $(this).find('td.detail div.title strong').text(),
+          price: $(this).find('div.sell_price strong').text(),
+          imgEl: $(this).find("td.image img").attr('src'),
+          link: $(this).find('td.image a').attr('href'),
+          author: $(this).find('div.author a').text(),
         };
         // console.log(itemObj);
         resultArr.push(itemObj);
-        
+
       });
       return resultArr;
     })
-    .then((data) =>res.send(data));
+    .then((data) => res.send(data));
 });
 
 
