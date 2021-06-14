@@ -1,29 +1,33 @@
 # 중고서적 거래 웹앱
 
 ## #실행 환경
-1. Node.js / MongoDB 설치
+1. Node.js 설치 / https://www.mongodb.com/try/download/community
+2. MongoDB 설치 / https://nodejs.org/en/
 
 ## 실행 방법
 > npm install -g yarn
 
 ## 1. 서버 실행
 ```
-> **cd server**
+1) cd server
 
-> **yarn install**
+2) yarn install
 
-> **yarn start**
+3) yarn start
 ```
 ## 2. 소켓 실행
-> **cd socket**
+```
+1) cd socket
 
-> **yarn install**
+2) yarn install
 
-> **yarn start**
-
+3) yarn start
+```
 ## 3. 클라이언트 실행
-> **cd client**
+```
+1) cd client
 
-> **yarn install**
+2) yarn install
 
-> **yarn start**
+3) yarn start
+```
