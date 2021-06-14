@@ -4,15 +4,21 @@
 
 ## 1. 서버 실행
 > cd server
+
 > yarn install
+
 > yarn start
 
 ## 2. 소켓 실행
 > cd socket
+
 > yarn install
+
 > yarn start
 
 ## 3. 클라이언트 실행
 > cd client
+
 > yarn install
+
 > yarn start
