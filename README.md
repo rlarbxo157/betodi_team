@@ -3,22 +3,22 @@
 ## 실행 방법
 
 ## 1. 서버 실행
-> cd server
+> **cd server**
 
-> yarn install
+> **yarn install**
 
-> yarn start
+> **yarn start**
 
 ## 2. 소켓 실행
-> cd socket
+> **cd socket**
 
-> yarn install
+> **yarn install**
 
-> yarn start
+> **yarn start**
 
 ## 3. 클라이언트 실행
-> cd client
+> **cd client**
 
-> yarn install
+> **yarn install**
 
-> yarn start
+> **yarn start**
