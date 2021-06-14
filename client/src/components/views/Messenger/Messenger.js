@@ -125,17 +125,17 @@ export default function Messenger(props) {
                                         </div>
                                     ))}
                                 </div>
-                                <div className="chatBoxBottom">
-                                    <textarea
+                                <form onSubmit={handleSubmit} className="chatBoxBottom">
+                                    <input
                                         className="chatMessageInput"
                                         placeholder="메시지를 입력하세요"
                                         onChange={(e) => setNewMessage(e.target.value)}
                                         value={newMessage}
-                                    ></textarea>
-                                    <button className="chatSubmitButton" onClick={handleSubmit}>
+                                    ></input>
+                                    <button type="submit" className="chatSubmitButton">
                                         보내기
                       </button>
-                                </div>
+                                </form>
                             </>
                         ) : (
                             <>
