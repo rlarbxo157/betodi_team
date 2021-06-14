@@ -1,8 +1,8 @@
 # 중고서적 거래 웹앱
 
 ## #실행 환경
-1. Node.js 설치 / https://www.mongodb.com/try/download/community
-2. MongoDB 설치 / https://nodejs.org/en/
+1. Node.js 설치 / https://nodejs.org/en/
+2. MongoDB 설치 / https://www.mongodb.com/try/download/community
 
 ## 실행 방법
 > npm install -g yarn
